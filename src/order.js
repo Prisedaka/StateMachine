@@ -6,6 +6,9 @@ export default class Order {
     this.history = [];
     this._fsm(); // eslint-disable-line 
   }
+  updateHistory(newWrite) {
+    this.history = [...this.history, newWrite];
+  }
 }
 StateMachine.factory(Order, {
   init: 'init',
@@ -14,40 +17,38 @@ StateMachine.factory(Order, {
     {
       name: 'accept',
       from: 'init',
-      to: 'pending'
+      to: 'pending',
     },
     {
       name: 'ship',
       from: 'pending',
-      to: 'shipped'
+      to: 'shipped',
     },
     {
       name: 'complete',
       from: 'shipped',
-      to: 'completed'
+      to: 'completed',
     },
     {
       name: 'cancel',
       from: ['init', 'pending'],
-      to: 'canceled'
+      to: 'canceled',
     },
     {
       name: 'refund',
       from: ['shipped', 'completed'],
-      to: 'refunded'
+      to: 'refunded',
     },
     // END
   ],
   methods: {
     // BEGIN (write your solution here)
-    Order.prototype = {
-      onEnterState: (lifecycle) => {
-        const obj = {
-          state: lifecycle.to,
-          createdAt: new Date()
-        };
-        this.history = [...this.history, obj];
-      }
+    onEnterState: (lifecycle) => {
+      const obj = {
+        state: lifecycle.to,
+        createdAt: new Date(),
+      };
+      Order.updateHistory(obj);
     },
     // END
   },
