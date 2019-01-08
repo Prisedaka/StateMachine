@@ -1,0 +1,52 @@
+{
+  "name": "state_machine",
+  "version": "1.0.0",
+  "main": "solution.js",
+  "scripts": {
+    "test": "jest --colors",
+    "babel-node": "babel-node",
+    "eslint": "eslint",
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "flow": "flow",
+    "flow-typed": "flow-typed",
+    "prepublishOnly": "npm run build"
+  },
+  "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "make": "^0.8.1",
+    "javascript-state-machine": "^3.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "debug": "^3.1.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-plugin-jest": "^21.15.0",
+    "jest": "^22",
+    "jest-cli": "^22.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prisedaka/StateMachine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Prisedaka/StateMachine/issues"
+  },
+  "homepage": "https://github.com/Prisedaka/StateMachine#readme",
+  "description": ""
+}
