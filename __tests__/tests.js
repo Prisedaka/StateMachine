@@ -1,11 +1,10 @@
 import Order from '../src/order';
 import {
   init,
-  cancel
+  cancel,
 } from '../src/solution';
 
 test('flow', () => {
-
   const order = new Order([]);
 
   expect(order.is('init')).toBeTruthy();
@@ -19,7 +18,6 @@ test('flow', () => {
   expect(order.can('cancel')).toBeTruthy();
 
   expect(order.can('refund')).toBeFalsy();
-
 
 
   order.accept();
@@ -37,7 +35,6 @@ test('flow', () => {
   expect(order.can('refund')).toBeFalsy();
 
 
-
   order.ship();
 
   expect(order.is('shipped')).toBeTruthy();
@@ -51,25 +48,19 @@ test('flow', () => {
   expect(order.can('cancel')).toBeFalsy();
 
   expect(order.can('refund')).toBeTruthy();
-
 });
 
 
-
 test('init', () => {
-
   const order = init([]);
 
   expect(order.is('init')).toBeTruthy();
 
   expect(order.history).toHaveLength(0);
-
 });
 
 
-
 test('cancel', () => {
-
   const order = new Order([]);
 
   cancel(order);
@@ -79,13 +70,10 @@ test('cancel', () => {
   expect(order.history[0].state).toBe('canceled');
 
   expect(order.is('canceled')).toBeTruthy();
-
 });
 
 
-
 test('can\'t cancel from current state', () => {
-
   const order = new Order([]);
 
   order.accept();
@@ -101,5 +89,4 @@ test('can\'t cancel from current state', () => {
   order.refund();
 
   expect(() => cancel(order)).not.toThrow();
-
 });

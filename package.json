@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "solution.js",
   "scripts": {
-    "test": "jest --colors",
+    "test": "jest --colors --watchAll",
     "babel-node": "babel-node",
     "eslint": "eslint",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
