@@ -6,21 +6,8 @@ export default class Order {
     this.history = [];
     this._fsm(); // eslint-disable-line 
   }
-  updateHistory(newWrite) {
-    this.history = [...this.history, newWrite];
-  }
 }
-Order.prototype = {
-  onEnterState: (lifecycle) => {
-    const obj = {
-      state: lifecycle.state,
-      createdAt: new Date(),
-    };
-    this.updateHistory(obj);
-    // this.history = [...this.history, obj];
-    // Order.prototype.history = [...Order.prototype.history, obj];
-  },
-};
+
 StateMachine.factory(Order, {
   init: 'init',
   transitions: [
@@ -54,17 +41,20 @@ StateMachine.factory(Order, {
   ],
   methods: {
     // BEGIN (write your solution here)
-    // onEnterState: (lifecycle) => {
-    //   const obj = {
-    //     state: lifecycle.to,
-    //     createdAt: new Date(),
-    //   };
-    //   // Order.updateHistory(obj);
-      
-    //   console.log(this.Order.history);
+    onEnterState: (lifecycle) => {
+      console.log(lifecycle.fsm.history);
+      const obj = {
+        state: lifecycle.to,
+        createdAt: new Date(),
+      };
+      // console.log('obj: ', obj);
+      this.lifecycle.fsm.history = [...this.history, obj];
+
+      // // Order.updateHistory(obj);
+      // console.log(this.Order.history);
       // Order.prototype = [...this.history, obj];
       // Order.prototype.history = [...Order.prototype.history, obj];
-    // },
+    },
     // END
   },
 });
